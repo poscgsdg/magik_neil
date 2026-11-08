@@ -22,12 +22,15 @@
     --white:#ffffff;
   }
   body{background:var(--bg);color:var(--text);font-family:Montserrat,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  section{scroll-margin-top:64px}
+  @media (prefers-reduced-motion:reduce){ *{transition:none!important} }
   a{color:inherit;text-decoration:none}
   img{display:block;max-width:100%}
   .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
 
-  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:52px;padding:0 28px;border-radius:30px;background:var(--cherry);color:#fff;font-weight:600;font-size:15px;transition:background .2s}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:52px;padding:0 28px;border-radius:30px;background:var(--cherry);color:#fff;font-weight:600;font-size:15px;transition:background .25s,color .25s,transform .15s ease}
   .btn:hover{background:var(--cherry-dark)}
+  .btn:active{transform:scale(.96)}
   .btn svg{width:18px;height:18px}
   .btn-line{background:transparent;color:var(--cherry);border:1.5px solid var(--cherry)}
   .btn-line:hover{background:var(--cherry);color:#fff}
@@ -38,7 +41,11 @@
   .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;font-size:14px}
   .brand img{width:38px;height:38px;border-radius:50%}
   header nav{display:none;gap:26px;font-size:14px;font-weight:500}
-  header nav a:hover{color:var(--cherry)}
+  header nav a{position:relative;padding:6px 0;transition:color .25s}
+  header nav a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;border-radius:2px;background:var(--cherry);transform:scaleX(0);transform-origin:center;transition:transform .3s ease}
+  header nav a:hover,header nav a.active{color:var(--cherry)}
+  header nav a:hover::after,header nav a.active::after{transform:scaleX(1)}
+  .brand{transition:opacity .2s} .brand:active{opacity:.7}
   .head-btn{height:40px;padding:0 18px;font-size:13px}
 
   /* hero */
@@ -340,6 +347,39 @@
   if('IntersectionObserver' in window){
     new IntersectionObserver(function(e){ s.classList.toggle('show', !e[0].isIntersecting); }).observe(document.getElementById('book'));
   } else { s.classList.add('show'); }
+
+  // плавна прокрутка до розділу з урахуванням висоти шапки
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function ease(t){ return t<.5 ? 4*t*t*t : 1-Math.pow(-2*t+2,3)/2; }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(ev){
+      var id=a.getAttribute('href'); var el=id.length>1 && document.querySelector(id);
+      if(!el) return;
+      ev.preventDefault();
+      var start=window.scrollY, end=el.getBoundingClientRect().top+start-(id==='#top'?0:64);
+      if(id==='#top') end=0;
+      if(reduce){ window.scrollTo(0,end); return; }
+      var dur=Math.min(900, Math.max(400, Math.abs(end-start)*.4)), t0=null;
+      function step(ts){ if(!t0) t0=ts; var p=Math.min(1,(ts-t0)/dur);
+        window.scrollTo(0, start+(end-start)*ease(p)); if(p<1) requestAnimationFrame(step); }
+      requestAnimationFrame(step);
+      history.replaceState(null,'',id);
+    });
+  });
+
+  // підсвічуємо пункт меню поточного розділу
+  var links={}; document.querySelectorAll('header nav a').forEach(function(a){ links[a.getAttribute('href').slice(1)]=a; });
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting && links[en.target.id]){
+          Object.keys(links).forEach(function(k){ links[k].classList.remove('active'); });
+          links[en.target.id].classList.add('active');
+        }
+      });
+    },{rootMargin:'-45% 0px -50% 0px'});
+    Object.keys(links).forEach(function(id){ var el=document.getElementById(id); if(el) io.observe(el); });
+  }
 </script>
 </body>
 </html>
