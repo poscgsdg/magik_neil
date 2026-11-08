@@ -363,7 +363,7 @@
       function step(ts){ if(!t0) t0=ts; var p=Math.min(1,(ts-t0)/dur);
         window.scrollTo(0, start+(end-start)*ease(p)); if(p<1) requestAnimationFrame(step); }
       requestAnimationFrame(step);
-      history.replaceState(null,'',id);
+      try{ history.replaceState(null,'',id); }catch(e){}
     });
   });
 
