@@ -1,0 +1,115 @@
+# Налаштування адмінки Decap CMS для сайту Magic Nails
+# Документація: https://decapcms.org/docs/
+
+backend:
+  name: github
+  repo: poscgsdg/magik_neil
+  branch: main
+  commit_messages:
+    update: "Адмінка: оновлено {{slug}}"
+    uploadMedia: "Адмінка: завантажено фото {{path}}"
+    deleteMedia: "Адмінка: видалено фото {{path}}"
+
+# Для перевірки на своєму компʼютері без входу через GitHub:
+# у папці сайту запусти `npx decap-server`, потім відкрий сайт через локальний сервер і зайди на /admin
+local_backend: true
+
+locale: uk
+site_url: https://poscgsdg.github.io/magik_neil/
+display_url: https://poscgsdg.github.io/magik_neil/
+logo_url: ../images/logo.png
+
+media_folder: images
+public_folder: images
+
+collections:
+  - name: site
+    label: Сайт
+    editor:
+      preview: false
+    files:
+      - name: content
+        label: Вміст сайту
+        file: content/site.json
+        format: json
+        fields:
+          - label: Контакти
+            name: contacts
+            widget: object
+            collapsed: false
+            fields:
+              - { label: Телефон, name: phone, widget: string, hint: "Наприклад: +38 093 149 16 72" }
+              - { label: Адреса, name: address, widget: string }
+              - { label: Місто, name: city, widget: string }
+              - { label: Графік (текстом), name: hours_text, widget: string, hint: "Як показувати на сайті, напр. «Щодня 9:00–20:00»" }
+              - { label: Відкриваємось о (година), name: open_hour, widget: number, value_type: int, min: 0, max: 23, hint: "Для статусу «Зараз відчинено»" }
+              - { label: Зачиняємось о (година), name: close_hour, widget: number, value_type: int, min: 1, max: 24 }
+              - { label: Telegram (посилання), name: telegram, widget: string }
+              - { label: Instagram (посилання), name: instagram, widget: string }
+              - { label: TikTok (посилання), name: tiktok, widget: string }
+
+          - label: Головний екран
+            name: hero
+            widget: object
+            fields:
+              - { label: Фото, name: image, widget: image }
+              - { label: Текст під заголовком, name: text, widget: text }
+
+          - label: Про нас
+            name: about
+            widget: object
+            fields:
+              - { label: Фото, name: image, widget: image }
+              - { label: Текст, name: text, widget: text }
+
+          - label: Послуги (картки «Що ми робимо»)
+            name: services
+            widget: list
+            summary: "{{fields.title}} — {{fields.price}}"
+            fields:
+              - label: Значок
+                name: icon
+                widget: select
+                options:
+                  - { label: Манікюр, value: manicure }
+                  - { label: Покриття, value: coating }
+                  - { label: Нарощення, value: extension }
+                  - { label: Дизайн (сердечко), value: design }
+                  - { label: Педикюр, value: pedicure }
+                  - { label: Зірочка, value: star }
+              - { label: Назва, name: title, widget: string }
+              - { label: Опис, name: desc, widget: string, required: false }
+              - { label: Ціна, name: price, widget: string, hint: "Напр. «від 650 ₴»" }
+
+          - label: Фото робіт
+            name: gallery
+            widget: list
+            summary: "{{fields.alt}}"
+            fields:
+              - { label: Фото, name: image, widget: image }
+              - { label: Короткий опис, name: alt, widget: string, required: false, hint: "Напр. «Вишневе покриття» — для Google і незрячих" }
+
+          - label: Ціни
+            name: prices
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - { label: Назва розділу, name: title, widget: string, hint: "Напр. «Манікюр», «Нарощення»" }
+              - label: Послуги
+                name: items
+                widget: list
+                summary: "{{fields.name}} — {{fields.price}}"
+                fields:
+                  - { label: Назва, name: name, widget: string }
+                  - { label: Підпис дрібним, name: note, widget: string, required: false, hint: "Напр. «Комплекс 1» — можна залишити порожнім" }
+                  - { label: Ціна, name: price, widget: string, hint: "Напр. «650 ₴»" }
+              - { label: Примітка під розділом, name: footnote, widget: text, required: false }
+
+          - label: Майстри
+            name: masters
+            widget: list
+            summary: "{{fields.name}}"
+            fields:
+              - { label: Імʼя, name: name, widget: string }
+              - { label: Посада, name: role, widget: string, default: "майстер манікюру" }
+              - { label: Фото, name: photo, widget: image, required: false, hint: "Можна не додавати — тоді буде заглушка" }

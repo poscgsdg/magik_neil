@@ -1,0 +1,72 @@
+{
+  "contacts": {
+    "phone": "+38 093 149 16 72",
+    "address": "просп. Коцюбинського, 38",
+    "city": "Вінниця",
+    "hours_text": "Щодня 9:00–20:00",
+    "open_hour": 9,
+    "close_hour": 20,
+    "telegram": "https://t.me/magic_nails_vin",
+    "instagram": "https://www.instagram.com/magic_nails_vin/",
+    "tiktok": "https://www.tiktok.com/@magic.nails.vi"
+  },
+  "hero": {
+    "image": "images/work-nude-glitter.jpg",
+    "text": "Манікюр, покриття гель-лаком, нарощення і дизайни. Просп. Коцюбинського 38, щодня з 9:00 до 20:00."
+  },
+  "about": {
+    "image": "images/work-red-hearts.jpg",
+    "text": "Студія із сучасним дизайном на Коцюбинського. Робимо акуратний манікюр, який тримається і не відшаровується, та дизайни на будь-який смак — від ніжного нюду до яскравих малюнків. Під час процедури пригостимо кавою."
+  },
+  "services": [
+    { "icon": "manicure", "title": "Манікюр", "desc": "з поліруванням нігтів", "price": "500 ₴" },
+    { "icon": "coating", "title": "Покриття", "desc": "манікюр + гель-лак", "price": "від 650 ₴" },
+    { "icon": "extension", "title": "Нарощення", "desc": "будь-яка довжина", "price": "від 850 ₴" },
+    { "icon": "design", "title": "Дизайн", "desc": "френч, втирка, малюнки", "price": "від 20 ₴" }
+  ],
+  "gallery": [
+    { "image": "images/work-pink.jpg", "alt": "Рожевий манікюр з дизайном" },
+    { "image": "images/work-cherry.jpg", "alt": "Вишневе покриття" },
+    { "image": "images/work-milky-square.jpg", "alt": "Молочний манікюр, квадратна форма" },
+    { "image": "images/work-white-crystals.jpg", "alt": "Білий манікюр з камінцями" },
+    { "image": "images/work-red-hearts.jpg", "alt": "Сердечка на молочному покритті" },
+    { "image": "images/work-nude-glitter.jpg", "alt": "Нюд з блиском" }
+  ],
+  "prices": [
+    {
+      "title": "Манікюр",
+      "items": [
+        { "name": "Манікюр + полірування", "note": "", "price": "500 ₴" },
+        { "name": "Манікюр + покриття", "note": "Комплекс 1", "price": "650 ₴" },
+        { "name": "Зняття, манікюр, покриття", "note": "Комплекс 2", "price": "700 ₴" },
+        { "name": "Зняття гель-лаку + манікюр", "note": "", "price": "550 ₴" },
+        { "name": "Відновлення архітектури, точок росту, кутів", "note": "", "price": "100 ₴" }
+      ],
+      "footnote": "У Комплекс 1 і 2 входить укріплення твердим матеріалом, якщо потрібно."
+    },
+    {
+      "title": "Нарощення",
+      "items": [
+        { "name": "Довжина 2", "note": "", "price": "850 ₴" },
+        { "name": "Довжина 3", "note": "", "price": "900 ₴" },
+        { "name": "Довжина 4+", "note": "", "price": "1000 ₴" },
+        { "name": "1 нігтик під час корекції", "note": "", "price": "50 ₴" }
+      ],
+      "footnote": ""
+    },
+    {
+      "title": "Дизайн",
+      "items": [
+        { "name": "Френч / втирка", "note": "", "price": "100 ₴" },
+        { "name": "Дизайн", "note": "залежно від складності", "price": "20 / 40 / 60 ₴" }
+      ],
+      "footnote": ""
+    }
+  ],
+  "masters": [
+    { "name": "Альона", "role": "майстер манікюру", "photo": "" },
+    { "name": "Іванка", "role": "майстер манікюру", "photo": "" },
+    { "name": "Марія", "role": "майстер манікюру", "photo": "" },
+    { "name": "Ім'я майстра", "role": "майстер манікюру", "photo": "" }
+  ]
+}
