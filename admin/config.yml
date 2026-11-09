@@ -15,8 +15,8 @@ backend:
 local_backend: true
 
 locale: uk
-site_url: https://poscgsdg.github.io/magik_neil/
-display_url: https://poscgsdg.github.io/magik_neil/
+site_url: https://magic-nails-vin.netlify.app/
+display_url: https://magic-nails-vin.netlify.app/
 logo_url: ../images/logo.png
 
 media_folder: images
