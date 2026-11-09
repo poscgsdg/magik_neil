@@ -113,3 +113,20 @@ collections:
               - { label: Імʼя, name: name, widget: string }
               - { label: Посада, name: role, widget: string, default: "майстер манікюру" }
               - { label: Фото, name: photo, widget: image, required: false, hint: "Можна не додавати — тоді буде заглушка" }
+
+          - label: Відгуки
+            name: reviews
+            widget: object
+            fields:
+              - { label: Рейтинг у Google, name: rating, widget: string, hint: "Напр. «4,9»" }
+              - { label: Кількість відгуків у Google, name: count, widget: string, hint: "Тільки число, напр. «43» — слово «відгуки» підставиться само" }
+              - { label: Посилання на відгуки в Google, name: google_url, widget: string }
+              - label: Відгуки на сайті
+                name: items
+                widget: list
+                summary: "{{fields.name}} — {{fields.stars}}★"
+                fields:
+                  - { label: Імʼя, name: name, widget: string }
+                  - { label: Коли (як у Google), name: date, widget: string, required: false, hint: "Напр. «2 місяці тому»" }
+                  - { label: Зірок, name: stars, widget: number, value_type: int, min: 1, max: 5, default: 5 }
+                  - { label: Текст відгуку, name: text, widget: text, hint: "Копіюйте дослівно з Google" }

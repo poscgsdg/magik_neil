@@ -5,6 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Magic Nails — манікюр, Вінниця</title>
 <meta name="description" content="Magic Nails — студія манікюру у Вінниці, просп. Коцюбинського 38. Манікюр, покриття, нарощення, дизайн. Запис у Telegram.">
+<link rel="canonical" href="https://magic-nails-vin.netlify.app/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Magic Nails">
+<meta property="og:locale" content="uk_UA">
+<meta property="og:url" content="https://magic-nails-vin.netlify.app/">
+<meta property="og:title" content="Magic Nails — студія манікюру у Вінниці">
+<meta property="og:description" content="Манікюр, покриття, нарощення та дизайни. Просп. Коцюбинського 38, щодня 9:00–20:00. Запис у Telegram.">
+<meta property="og:image" content="https://magic-nails-vin.netlify.app/images/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Magic Nails — студія манікюру у Вінниці">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#FAEFED">
 <link rel="icon" href="images/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -238,7 +250,7 @@
     .works-scroll img{width:100%}
     .price-wrap{columns:2;column-gap:20px}
     .price-wrap .price-card{break-inside:avoid;margin:0 0 20px}
-    .masters-grid{grid-template-columns:repeat(4,1fr);gap:18px}
+    .masters-grid{grid-template-columns:repeat(var(--cols,4),minmax(0,240px));gap:18px}
     .rev-scroll{margin:24px 0 0;padding:0 0 6px}
     .rev{width:calc((100% - 24px)/3)}
     .rev-top{display:flex;justify-content:space-between;align-items:flex-end;gap:20px}
@@ -301,7 +313,7 @@
   <div class="wrap">
     <div class="hero-photo">
       <img id="heroImg" src="" alt="Манікюр від Magic Nails">
-      <div class="hero-badge"><b>4,9 ★</b>в Google, 43 відгуки</div>
+      <div class="hero-badge"><b><span data-r="rating">4,9</span> ★</b>в Google, <span data-r="count">43</span> <span data-r="word">відгуки</span></div>
     </div>
     <div>
       <h1>Студія манікюру <span>Magic Nails</span> у Вінниці</h1>
@@ -333,7 +345,7 @@
       <h2>Невелика студія, де вас пам'ятають</h2>
       <p class="intro" id="aboutText"></p>
       <div class="facts">
-        <div class="fact"><b>4,9</b><span>рейтинг у Google</span></div>
+        <div class="fact"><b data-r="rating">4,9</b><span>рейтинг у Google</span></div>
         <div class="fact"><b>7/7</b><span>працюємо щодня</span></div>
         <div class="fact"><b id="factHours">9–20</b><span>години роботи</span></div>
       </div>
@@ -382,38 +394,12 @@
       </div>
     </div>
     <div class="rating">
-      <div class="big">4,9</div>
-      <div><div class="stars">★★★★★</div><p>43 відгуки в Google Maps</p></div>
+      <div class="big" data-r="rating">4,9</div>
+      <div><div class="stars">★★★★★</div><p><span data-r="count">43</span> <span data-r="word">відгуки</span> в Google Maps</p></div>
     </div>
-    <div class="rev-scroll" id="revScroll">
-      <article class="rev">
-        <div class="rev-head"><div class="ava">К</div><div><b>Карина Костерова</b><small>3 місяці тому</small></div><svg class="g" viewBox="0 0 48 48" aria-label="Google"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9 3.5l6.7-6.7C35.6 2.4 30.2 0 24 0 14.6 0 6.6 5.4 2.7 13.3l7.8 6C12.4 13.6 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.7c-.6 2.9-2.2 5.4-4.7 7.1l7.6 5.9c4.4-4.1 6.9-10.1 6.9-17.5z"/><path fill="#FBBC05" d="M10.5 28.7c-.5-1.4-.8-3-.8-4.7s.3-3.2.8-4.7l-7.8-6C1 16.6 0 20.2 0 24s1 7.4 2.7 10.7l7.8-6z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.6-5.9c-2.1 1.4-4.9 2.3-8.3 2.3-6.3 0-11.6-4.2-13.5-9.9l-7.8 6C6.6 42.6 14.6 48 24 48z"/></svg></div>
-        <div class="stars">★★★★★</div>
-        <p>Альона – майстер, до якого хочеться повертатися знову і знову! 💕 Завжди ідеальний манікюр, акуратна робота, стерильність, уважність і приємне спілкування. Результат щоразу перевершує очікування. Дякую за красу, яку ти створюєш! Щиро рекомендую всім! 🌷</p>
-      </article>
-      <article class="rev">
-        <div class="rev-head"><div class="ava">И</div><div><b>Ирина Коваль</b><small>місяць тому</small></div><svg class="g" viewBox="0 0 48 48" aria-label="Google"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9 3.5l6.7-6.7C35.6 2.4 30.2 0 24 0 14.6 0 6.6 5.4 2.7 13.3l7.8 6C12.4 13.6 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.7c-.6 2.9-2.2 5.4-4.7 7.1l7.6 5.9c4.4-4.1 6.9-10.1 6.9-17.5z"/><path fill="#FBBC05" d="M10.5 28.7c-.5-1.4-.8-3-.8-4.7s.3-3.2.8-4.7l-7.8-6C1 16.6 0 20.2 0 24s1 7.4 2.7 10.7l7.8-6z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.6-5.9c-2.1 1.4-4.9 2.3-8.3 2.3-6.3 0-11.6-4.2-13.5-9.9l-7.8 6C6.6 42.6 14.6 48 24 48z"/></svg></div>
-        <div class="stars">★★★★★</div>
-        <p>“Magic nails” це 🫶 У Вінниці я була в багатьох студіях і змінила багато майстрів і от нарешті я знайшла тих самих! Майстри Іванка і Альона професіонали своєї справи! Лише до них і на педикюр, і на манікюр 💅 Крута атмосфера, подаруночки 🎁 до свят (у вигляді кремчиків, олійок) це дуже приємно ☺️ Бажаю дівчатками лише процвітання і вдячних клієнтів!</p>
-      </article>
-      <article class="rev">
-        <div class="rev-head"><div class="ava">А</div><div><b>Анюта</b><small>2 роки тому</small></div><svg class="g" viewBox="0 0 48 48" aria-label="Google"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9 3.5l6.7-6.7C35.6 2.4 30.2 0 24 0 14.6 0 6.6 5.4 2.7 13.3l7.8 6C12.4 13.6 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.7c-.6 2.9-2.2 5.4-4.7 7.1l7.6 5.9c4.4-4.1 6.9-10.1 6.9-17.5z"/><path fill="#FBBC05" d="M10.5 28.7c-.5-1.4-.8-3-.8-4.7s.3-3.2.8-4.7l-7.8-6C1 16.6 0 20.2 0 24s1 7.4 2.7 10.7l7.8-6z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.6-5.9c-2.1 1.4-4.9 2.3-8.3 2.3-6.3 0-11.6-4.2-13.5-9.9l-7.8 6C6.6 42.6 14.6 48 24 48z"/></svg></div>
-        <div class="stars">★★★★★</div>
-        <p>Це місце, куди хочеться повертатись ♡ роблю манікюр і педикюр вже не перший раз, і завжди йду задоволена) все охайно, стерильно, уважно! Приємні та дружелюбні дівчата, приємна атмосфера! майстер Альона love love love ❤️</p>
-      </article>
-      <article class="rev">
-        <div class="rev-head"><div class="ava">V</div><div><b>Valeria Chernikova</b><small>2 роки тому</small></div><svg class="g" viewBox="0 0 48 48" aria-label="Google"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9 3.5l6.7-6.7C35.6 2.4 30.2 0 24 0 14.6 0 6.6 5.4 2.7 13.3l7.8 6C12.4 13.6 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.7c-.6 2.9-2.2 5.4-4.7 7.1l7.6 5.9c4.4-4.1 6.9-10.1 6.9-17.5z"/><path fill="#FBBC05" d="M10.5 28.7c-.5-1.4-.8-3-.8-4.7s.3-3.2.8-4.7l-7.8-6C1 16.6 0 20.2 0 24s1 7.4 2.7 10.7l7.8-6z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.6-5.9c-2.1 1.4-4.9 2.3-8.3 2.3-6.3 0-11.6-4.2-13.5-9.9l-7.8 6C6.6 42.6 14.6 48 24 48z"/></svg></div>
-        <div class="stars">★★★★★</div>
-        <p>Вже років 3 відвідую майстра Марію, найкращий майстер ever ❤️ якісно, стерильно, швидко, з усіма побажаннями клієнта та рекомендаціями для клієнта, чудова атмосфера студії і професійність майстра. Також майстер Альона чудова 🤍 робила в неї також, дуже акуратно, безболісно та уважно робить 🤗 дякую вам дівчата, за вашу роботу 😘</p>
-      </article>
-      <article class="rev">
-        <div class="rev-head"><div class="ava">В</div><div><b>Вікторія Богаченко</b><small>2 роки тому</small></div><svg class="g" viewBox="0 0 48 48" aria-label="Google"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9 3.5l6.7-6.7C35.6 2.4 30.2 0 24 0 14.6 0 6.6 5.4 2.7 13.3l7.8 6C12.4 13.6 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.7c-.6 2.9-2.2 5.4-4.7 7.1l7.6 5.9c4.4-4.1 6.9-10.1 6.9-17.5z"/><path fill="#FBBC05" d="M10.5 28.7c-.5-1.4-.8-3-.8-4.7s.3-3.2.8-4.7l-7.8-6C1 16.6 0 20.2 0 24s1 7.4 2.7 10.7l7.8-6z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.6-5.9c-2.1 1.4-4.9 2.3-8.3 2.3-6.3 0-11.6-4.2-13.5-9.9l-7.8 6C6.6 42.6 14.6 48 24 48z"/></svg></div>
-        <div class="stars">★★★★★</div>
-        <p>Салон і манікюр просто бомба 🥰 Майстер Альона дуже талановита, робить швидко та якісно 👏🏻 Однозначно рекомендую!!!!</p>
-      </article>
-    </div>
+    <div class="rev-scroll" id="revScroll"></div>
     <div class="rev-dots" id="revDots"></div>
-    <a class="btn btn-line" style="margin-top:16px" href="https://www.google.com/maps/search/?api=1&query=Magic+Nails+%D0%9A%D0%BE%D1%86%D1%8E%D0%B1%D0%B8%D0%BD%D1%81%D1%8C%D0%BA%D0%BE%D0%B3%D0%BE+38+%D0%92%D1%96%D0%BD%D0%BD%D0%B8%D1%86%D1%8F" target="_blank" rel="noopener">Читати відгуки в Google</a>
+    <a class="btn btn-line" id="revGoogle" style="margin-top:16px" href="https://www.google.com/maps/search/?api=1&query=Magic+Nails+%D0%9A%D0%BE%D1%86%D1%8E%D0%B1%D0%B8%D0%BD%D1%81%D1%8C%D0%BA%D0%BE%D0%B3%D0%BE+38+%D0%92%D1%96%D0%BD%D0%BD%D0%B8%D1%86%D1%8F" target="_blank" rel="noopener">Читати відгуки в Google</a>
   </div>
 </section>
 
@@ -499,6 +485,7 @@
       pedicure:'<path d="M7 21c-1.5-3-2-6 0-9s2-6 1-9"/><path d="M13 21c0-3 1-5 3-7s2.5-5 1.5-8"/>',
       star:'<path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/>'
     };
+    var GICON='<svg class="g" viewBox="0 0 48 48" aria-label="Google"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9 3.5l6.7-6.7C35.6 2.4 30.2 0 24 0 14.6 0 6.6 5.4 2.7 13.3l7.8 6C12.4 13.6 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.7c-.6 2.9-2.2 5.4-4.7 7.1l7.6 5.9c4.4-4.1 6.9-10.1 6.9-17.5z"/><path fill="#FBBC05" d="M10.5 28.7c-.5-1.4-.8-3-.8-4.7s.3-3.2.8-4.7l-7.8-6C1 16.6 0 20.2 0 24s1 7.4 2.7 10.7l7.8-6z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.6-5.9c-2.1 1.4-4.9 2.3-8.3 2.3-6.3 0-11.6-4.2-13.5-9.9l-7.8 6C6.6 42.6 14.6 48 24 48z"/></svg>';
     var AVA='<svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="8" r="4.2"/><path d="M3.5 21c.8-4.6 4.2-7 8.5-7s7.7 2.4 8.5 7z"/></svg>';
     function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];}); }
     function img(p){ var M=window.__IMG__; return (M && M[p]) || p; }
@@ -535,7 +522,20 @@
           }).join('')+
           (gr.footnote?'<p class="note">'+esc(gr.footnote)+'</p>':'')+'</div>';
       }).join('');
+      // відгуки
+      var R=d.reviews||{};
+      function word(n){ n=Math.abs(parseInt(n,10)||0); var a=n%10,b=n%100; return (a===1&&b!==11)?'відгук':(a>=2&&a<=4&&(b<12||b>14))?'відгуки':'відгуків'; }
+      document.querySelectorAll('[data-r]').forEach(function(el){ var k=el.getAttribute('data-r');
+        if(k==='word') el.textContent=word(R.count); else if(R[k]!=null&&R[k]!=='') el.textContent=R[k]; });
+      if(R.google_url && $('revGoogle')) $('revGoogle').href=R.google_url;
+      $('revScroll').innerHTML=(R.items||[]).map(function(r){
+        var n=Math.max(1,Math.min(5,parseInt(r.stars,10)||5)), first=(String(r.name||'?').trim()[0]||'?').toUpperCase();
+        return '<article class="rev"><div class="rev-head"><div class="ava">'+esc(first)+'</div><div><b>'+esc(r.name)+'</b><small>'+esc(r.date)+'</small></div>'+GICON+'</div>'+
+          '<div class="stars">'+'★★★★★'.slice(0,n)+'<span style="opacity:.25">'+'★★★★★'.slice(n)+'</span></div><p>'+esc(r.text)+'</p></article>';
+      }).join('');
+      if(window.initReviews) window.initReviews();
       // майстри
+      $('mastersGrid').style.setProperty('--cols', Math.min(4,(d.masters||[]).length||1));
       $('mastersGrid').innerHTML=(d.masters||[]).map(function(m){
         var ph = m.photo ? '<div class="ph has-photo"><img loading="lazy" src="'+esc(img(m.photo))+'" alt="'+esc(m.name)+'"></div>' : '<div class="ph">'+AVA+'</div>';
         return '<div class="master">'+ph+'<h3>'+esc(m.name)+'</h3><p>'+esc(m.role)+'</p></div>';
@@ -621,19 +621,24 @@
     upd(); window.updateStatus=upd; setInterval(upd,60000);
   })();
 
-  // відгуки: крапки й стрілки
-  (function(){
-    var sc=document.getElementById('revScroll'); if(!sc) return;
-    var cards=[].slice.call(sc.children), dots=document.getElementById('revDots');
+  // відгуки: крапки й стрілки (запускається після того, як відгуки намальовані)
+  window.initReviews=function(){
+    var sc=document.getElementById('revScroll'), dots=document.getElementById('revDots'); if(!sc||!dots) return;
+    var cards=[].slice.call(sc.children); dots.innerHTML='';
     cards.forEach(function(_,i){ var d=document.createElement('i'); if(i===0) d.className='on'; dots.appendChild(d); });
     function cur(){ var best=0, bd=1e9, mid=sc.scrollLeft+sc.clientWidth/2;
       cards.forEach(function(c,i){ var d=Math.abs(c.offsetLeft-sc.offsetLeft+c.offsetWidth/2-mid); if(d<bd){bd=d;best=i;} }); return best; }
-    sc.addEventListener('scroll',function(){ var c=cur(); [].forEach.call(dots.children,function(d,i){ d.className=i===c?'on':''; }); },{passive:true});
-    function go(dir){ var step=cards[0].offsetWidth+12; sc.scrollBy({left:dir*step,behavior:'smooth'}); }
-    var p=document.getElementById('revPrev'), n=document.getElementById('revNext');
-    if(p) p.addEventListener('click',function(){ go(-1); });
-    if(n) n.addEventListener('click',function(){ go(1); });
-  })();
+    if(!sc._bound){
+      sc._bound=true;
+      sc.addEventListener('scroll',function(){ var c=cur(); [].forEach.call(dots.children,function(d,i){ d.className=i===c?'on':''; }); },{passive:true});
+      function go(dir){ var f=sc.firstElementChild; if(!f) return; sc.scrollBy({left:dir*(f.offsetWidth+12),behavior:'smooth'}); }
+      var p=document.getElementById('revPrev'), n=document.getElementById('revNext');
+      if(p) p.addEventListener('click',function(){ go(-1); });
+      if(n) n.addEventListener('click',function(){ go(1); });
+    }
+  };
+
+  if(document.getElementById('revScroll') && document.getElementById('revScroll').children.length) window.initReviews();
 
   // підсвічуємо пункт меню поточного розділу
   var links={}; document.querySelectorAll('header nav a').forEach(function(a){ links[a.getAttribute('href').slice(1)]=a; });
