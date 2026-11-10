@@ -59,7 +59,7 @@ collections:
             name: about
             widget: object
             fields:
-              - { label: Фото, name: image, widget: image }
+              - { label: Фото, name: image, widget: image, hint: "Горизонтальне фото студії (інтер'єр, робочі місця, команда)" }
               - { label: Текст, name: text, widget: text }
 
           - label: Послуги (картки «Що ми робимо»)
