@@ -302,6 +302,22 @@
   .js .reveal.in{opacity:1;transform:none}
   @media (prefers-reduced-motion:reduce){ .js .reveal{opacity:1;transform:none} }
 
+
+  /* ===== анімація при відкритті сайту ===== */
+  @keyframes mnUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+  @keyframes mnDown{from{opacity:0;transform:translateY(-100%)}to{opacity:1;transform:none}}
+  .js header{animation:mnDown .8s cubic-bezier(.2,.7,.2,1) .05s both}
+  .js .hero-pills{animation:mnUp .9s cubic-bezier(.2,.7,.2,1) .25s both}
+  .js .hero h1{animation:mnUp .9s cubic-bezier(.2,.7,.2,1) .38s both}
+  .js .hero-text>p{animation:mnUp .9s cubic-bezier(.2,.7,.2,1) .52s both}
+  .js .hero .btns{animation:mnUp .9s cubic-bezier(.2,.7,.2,1) .66s both}
+  .js .hero-bg img{opacity:0;transform:scale(1.08);transition:opacity 1.2s ease,transform 2.2s cubic-bezier(.2,.7,.2,1)}
+  .js .hero-bg.ready img{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){
+    .js header,.js .hero-pills,.js .hero h1,.js .hero-text>p,.js .hero .btns{animation:none}
+    .js .hero-bg img{opacity:1;transform:none;transition:none}
+  }
+
   /* desktop */
   @media (min-width:860px){
     body{font-size:16px}
@@ -687,6 +703,7 @@
       if(reduce){ window.scrollTo(0,end); return; }
       var dur=Math.min(900, Math.max(400, Math.abs(end-start)*.4)), t0=null;
       if(window._navSet){ window._navSet(id==='#top'?null:id.slice(1)); window._spyLock=Date.now()+dur+80; }
+      window._anchorUntil=Date.now()+dur+60;
       function step(ts){ if(!t0) t0=ts; var p=Math.min(1,(ts-t0)/dur);
         window.scrollTo(0, start+(end-start)*ease(p)); if(p<1) requestAnimationFrame(step); }
       requestAnimationFrame(step);
@@ -771,6 +788,53 @@
     [].forEach.call(els,function(el){ el.classList.add('reveal'); io.observe(el); });
     // страховка: якщо щось не спрацювало, за 4 с показуємо все
     setTimeout(function(){ [].forEach.call(els,function(el){ if(el.getBoundingClientRect().top<innerHeight) el.classList.add('in'); }); },4000);
+  })();
+
+  // головне фото: плавно проявляється, коли завантажилось
+  (function(){
+    var hi=document.getElementById('heroImg'); if(!hi) return;
+    var box=hi.parentNode;
+    function ready(){ box.classList.add('ready'); }
+    hi.addEventListener('load',ready);
+    if(hi.complete && hi.naturalWidth) ready();
+    setTimeout(ready,1800); // страховка, якщо фото довго вантажиться
+  })();
+
+  // плавна (інерційна) прокрутка коліщатком миші на комп'ютері
+  (function(){
+    if(reduce) return;
+    if(!(window.matchMedia && matchMedia('(hover:hover) and (pointer:fine)').matches)) return; // телефони й планшети — рідна прокрутка
+    var target=scrollY, cur=scrollY, running=false, ease=.1;
+    function max(){ return document.documentElement.scrollHeight-innerHeight; }
+    function blocked(){
+      var b=document.body.classList;
+      return b.contains('menu-open')||b.contains('lb-open');
+    }
+    function canScrollX(el){
+      for(;el && el!==document.body; el=el.parentElement){
+        if(el.scrollWidth>el.clientWidth+1){ var o=getComputedStyle(el).overflowX; if(o==='auto'||o==='scroll') return true; }
+      }
+      return false;
+    }
+    function loop(){
+      cur+= (target-cur)*ease;
+      if(Math.abs(target-cur)<.5){ cur=target; running=false; }
+      window.scrollTo(0,cur);
+      if(running) requestAnimationFrame(loop);
+    }
+    addEventListener('wheel',function(e){
+      if(e.ctrlKey||e.defaultPrevented||blocked()) return;                        // масштаб сторінки, відкрите меню/фото
+      if(Math.abs(e.deltaX)>Math.abs(e.deltaY) || e.shiftKey) return;             // гортання вбік (відгуки) — як завжди
+      if(window._anchorUntil && Date.now()<window._anchorUntil){ e.preventDefault(); return; }
+      e.preventDefault();
+      if(!running){ target=cur=scrollY; }
+      var d=e.deltaY*(e.deltaMode===1?40:e.deltaMode===2?innerHeight:1);
+      target=Math.max(0,Math.min(max(),target+d));
+      if(!running){ running=true; requestAnimationFrame(loop); }
+    },{passive:false});
+    // якщо гортали клавіатурою, повзунком чи кнопкою меню — підхоплюємо нове місце
+    addEventListener('scroll',function(){ if(!running){ target=cur=scrollY; } },{passive:true});
+    addEventListener('resize',function(){ target=Math.min(target,max()); });
   })();
 
   // підсвічуємо в меню розділ, до якого догортали
