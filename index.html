@@ -17,7 +17,7 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Magic Nails — студія манікюру у Вінниці">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#FAEFED">
+<meta name="theme-color" content="#FBF6EA">
 <link rel="icon" href="images/logo.png">
 <script>document.documentElement.className+=" js"</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,13 +25,13 @@
 <style>
   *{box-sizing:border-box;margin:0;padding:0}
   :root{
-    --bg:#FAEFED;
-    --powder:#EFCEC9;
-    --cherry:#911439;
-    --cherry-dark:#760f2e;
-    --text:#2B2B45;
-    --muted:#6e6a80;
-    --dark:#38334F;
+    --bg:#FBF6EA;
+    --powder:#F2E2B3;
+    --cherry:#8F620B;
+    --cherry-dark:#6F4B06;
+    --text:#2A2620;
+    --muted:#6E6556;
+    --dark:#2E2A24;
     --white:#ffffff;
   }
   body{background:var(--bg);color:var(--text);font-family:Montserrat,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
@@ -49,7 +49,7 @@
   .btn-line:hover{background:var(--cherry);color:#fff}
 
   /* header */
-  header{position:sticky;top:0;z-index:20;background:rgba(250,239,237,.95);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+  header{position:sticky;top:0;z-index:20;background:rgba(251,246,234,.95);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
   header .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
   .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;font-size:14px}
   .brand img{width:38px;height:38px;border-radius:50%}
@@ -61,7 +61,7 @@
   .brand{transition:opacity .2s} .brand:active{opacity:.7}
   .head-btn{height:40px;padding:0 18px;font-size:13px;display:none}
   header{transition:box-shadow .3s}
-  header.scrolled{box-shadow:0 6px 20px rgba(43,43,69,.08)}
+  header.scrolled{box-shadow:0 6px 20px rgba(42,38,32,.08)}
   .brand-txt small{display:block;font-size:11px;font-weight:500;letter-spacing:.02em;text-transform:none;color:var(--muted);margin-top:1px}
   .m-actions{display:flex;align-items:center;gap:8px}
   .icon-btn{width:42px;height:42px;border-radius:50%;border:0;display:grid;place-items:center;cursor:pointer;transition:background .25s,transform .15s}
@@ -144,7 +144,7 @@
   .prices{background:var(--powder);border-radius:40px}
   .price-card{background:var(--white);border-radius:24px;padding:22px 20px;margin-top:16px}
   .price-card h3{font-size:18px;font-weight:700;margin-bottom:6px}
-  .row{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:12px 0;border-bottom:1px dashed #e4d6d3}
+  .row{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:12px 0;border-bottom:1px dashed #EADFC6}
   .row:last-child{border-bottom:0;padding-bottom:0}
   .row small{display:block;color:var(--muted);font-size:12px}
   .row b{white-space:nowrap;color:var(--cherry);font-variant-numeric:tabular-nums}
@@ -190,7 +190,7 @@
   .contacts .btn-line{color:#fff;border-color:rgba(255,255,255,.5)}
   .contacts .btn-line:hover{background:#fff;color:var(--dark)}
   /* map */
-  .map{margin-top:36px;border-radius:24px;overflow:hidden;background:#2f2b45;position:relative;aspect-ratio:4/3}
+  .map{margin-top:36px;border-radius:24px;overflow:hidden;background:#24211C;position:relative;aspect-ratio:4/3}
   .map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:grayscale(.35) contrast(1.05)}
   .map-fallback{position:absolute;inset:0;display:grid;place-items:center;text-align:center;color:rgba(255,255,255,.6);font-size:14px;padding:20px}
 
@@ -223,7 +223,7 @@
 
   .sticky{position:fixed;left:16px;right:16px;bottom:calc(14px + env(safe-area-inset-bottom));z-index:30;transform:translateY(160%);transition:transform .25s}
   .sticky.show{transform:none}
-  .sticky .btn{width:100%;box-shadow:0 10px 30px rgba(145,20,57,.35)}
+  .sticky .btn{width:100%;box-shadow:0 10px 30px rgba(143,98,11,.35)}
 
 
   /* ===== polish ===== */
@@ -236,32 +236,32 @@
   h3{letter-spacing:-.01em}
   .label::before{content:"";display:inline-block;width:18px;height:2px;border-radius:2px;background:currentColor;vertical-align:middle;margin:-2px 8px 0 0}
 
-  .btn{box-shadow:0 6px 18px rgba(145,20,57,.22);transition:background .25s,color .25s,transform .2s ease,box-shadow .25s}
+  .btn{box-shadow:0 6px 18px rgba(143,98,11,.22);transition:background .25s,color .25s,transform .2s ease,box-shadow .25s}
   .btn{white-space:nowrap}
   .btn-line{box-shadow:none}
   @media (hover:hover){
-    .btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(145,20,57,.28)}
-    .btn-line:hover{box-shadow:0 8px 20px rgba(145,20,57,.2)}
-    .svc:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(43,43,69,.08)}
+    .btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(143,98,11,.28)}
+    .btn-line:hover{box-shadow:0 8px 20px rgba(143,98,11,.2)}
+    .svc:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(42,38,32,.08)}
     .work:hover img,.svc:hover .svc-img img{transform:scale(1.05)}
-    .master:hover{transform:translateY(-4px);box-shadow:0 16px 34px rgba(43,43,69,.1)}
+    .master:hover{transform:translateY(-4px);box-shadow:0 16px 34px rgba(42,38,32,.1)}
   }
   .btn:active{transform:scale(.97)}
 
   /* hero: фото на всю ширину, шапка поверх фото */
   header{background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;transition:background .3s,box-shadow .3s}
-  header.scrolled{background:rgba(250,239,237,.95);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+  header.scrolled{background:rgba(251,246,234,.95);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
   .menu-open header.scrolled{background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;box-shadow:none}
   .hero{position:relative;margin-top:-64px;padding:0 0 48px;overflow:hidden}
   .hero{--hh:410px;--hh:clamp(270px,45svh,410px)}
   .hero-bg{position:absolute;left:0;right:0;top:0;height:var(--hh);background:var(--bg)}
   .hero-bg img{width:100%;height:100%;object-fit:cover;object-position:80% 50%}
-  .hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(250,239,237,.6) 0,rgba(250,239,237,0) 20%,rgba(250,239,237,0) 55%,rgba(250,239,237,.75) 82%,var(--bg) 98%)}
+  .hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(251,246,234,.6) 0,rgba(251,246,234,0) 20%,rgba(251,246,234,0) 55%,rgba(251,246,234,.75) 82%,var(--bg) 98%)}
   .hero .wrap{position:relative;padding-top:calc(var(--hh) - 18px)}
   .hero-pills{display:flex;flex-wrap:wrap;gap:8px}
-  .pill{display:inline-flex;align-items:center;gap:5px;background:var(--white);border-radius:20px;padding:6px 12px;font-size:13px;color:var(--text);box-shadow:0 2px 10px rgba(43,43,69,.06)}
+  .pill{display:inline-flex;align-items:center;gap:5px;background:var(--white);border-radius:20px;padding:6px 12px;font-size:13px;color:var(--text);box-shadow:0 2px 10px rgba(42,38,32,.06)}
   .pill b{color:var(--cherry);font-weight:700}
-  .status-light{background:var(--white);color:var(--text);box-shadow:0 2px 10px rgba(43,43,69,.06)}
+  .status-light{background:var(--white);color:var(--text);box-shadow:0 2px 10px rgba(42,38,32,.06)}
 
   /* section rhythm */
   .services{padding-bottom:28px}
@@ -272,8 +272,8 @@
   footer{padding-bottom:40px}
 
   .svc,.master{transition:transform .3s ease,box-shadow .3s ease}
-  .price-card{box-shadow:0 10px 30px rgba(145,20,57,.06)}
-  .master{box-shadow:0 6px 20px rgba(43,43,69,.05)}
+  .price-card{box-shadow:0 10px 30px rgba(143,98,11,.06)}
+  .master{box-shadow:0 6px 20px rgba(42,38,32,.05)}
 
   /* works */
   .work{flex:none;width:70%;aspect-ratio:3/4;border-radius:20px;overflow:hidden;scroll-snap-align:center;border:0;padding:0;background:var(--powder);cursor:zoom-in;display:block}
@@ -283,11 +283,11 @@
   .masters-grid{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin:28px -20px 0;padding:0 20px 14px;scrollbar-width:none}
   .masters-grid::-webkit-scrollbar{display:none}
   .master{flex:none;width:46%;scroll-snap-align:start;scroll-margin-left:20px}
-  .ph{background:linear-gradient(150deg,#f3d9d5 0%,#e6b9b2 100%)}
+  .ph{background:linear-gradient(150deg,#F6E9C4 0%,#E5C77F 100%)}
   .ph span{font-size:56px;font-weight:600;color:#fff;line-height:1;letter-spacing:0}
 
   /* lightbox */
-  .lb{position:fixed;inset:0;z-index:60;background:rgba(27,25,40,.93);display:grid;place-items:center;opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s}
+  .lb{position:fixed;inset:0;z-index:60;background:rgba(26,23,19,.94);display:grid;place-items:center;opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s}
   .lb.open{opacity:1;visibility:visible}
   .lb img{max-width:calc(100vw - 24px);max-height:calc(100vh - 120px);max-height:calc(100dvh - 120px);border-radius:16px;object-fit:contain;transform:scale(.96);transition:transform .25s}
   .lb.open img{transform:none}
@@ -342,7 +342,7 @@
     .hero{min-height:calc(90vh + 56px);min-height:calc(90svh + 56px);display:flex;align-items:center;padding:120px 0 150px}
     .hero-bg{height:auto;bottom:0;background:var(--powder)}
     .hero-bg img{object-position:100% 35%}
-    .hero-bg::after{background:linear-gradient(90deg,rgba(250,239,237,.92) 0,rgba(250,239,237,.62) 36%,rgba(250,239,237,0) 66%),linear-gradient(180deg,rgba(250,239,237,.55) 0,rgba(250,239,237,0) 20%)}
+    .hero-bg::after{background:linear-gradient(90deg,rgba(251,246,234,.92) 0,rgba(251,246,234,.62) 36%,rgba(251,246,234,0) 66%),linear-gradient(180deg,rgba(251,246,234,.55) 0,rgba(251,246,234,0) 20%)}
     .hero .wrap{padding-top:0;width:100%}
     .hero-text{max-width:540px}
     .services{margin-top:-56px;position:relative}
@@ -351,7 +351,7 @@
   @media (min-width:860px) and (max-width:1120px){
     .hero-text{max-width:400px}
     .hero h1{font-size:44px}
-    .hero-bg::after{background:linear-gradient(90deg,rgba(250,239,237,.96) 0,rgba(250,239,237,.8) 40%,rgba(250,239,237,0) 76%),linear-gradient(180deg,rgba(250,239,237,.55) 0,rgba(250,239,237,0) 20%)}
+    .hero-bg::after{background:linear-gradient(90deg,rgba(251,246,234,.96) 0,rgba(251,246,234,.8) 40%,rgba(251,246,234,0) 76%),linear-gradient(180deg,rgba(251,246,234,.55) 0,rgba(251,246,234,0) 20%)}
   }
   @media (min-width:860px){
     .services{padding-bottom:44px}
