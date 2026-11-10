@@ -115,7 +115,7 @@
   .intro{color:var(--muted);max-width:520px}
 
   /* services */
-  .services{background:var(--white);border-radius:40px 40px 0 0}
+  .services{background:var(--white)}
   .svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:28px}
   .svc{background:var(--bg);border-radius:20px;overflow:hidden;display:flex;flex-direction:column}
   .svc-img{aspect-ratio:4/5;background:var(--powder);overflow:hidden}
@@ -138,10 +138,9 @@
   /* works */
   .works-scroll{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;margin:28px -20px 0;padding:0 20px 4px;scrollbar-width:none}
   .works-scroll::-webkit-scrollbar{display:none}
-  .works-links{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px;max-width:420px}
 
   /* prices */
-  .prices{background:var(--powder);border-radius:40px}
+  .prices{background:var(--powder)}
   .price-card{background:var(--white);border-radius:24px;padding:22px 20px;margin-top:16px}
   .price-card h3{font-size:18px;font-weight:700;margin-bottom:6px}
   .row{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:12px 0;border-bottom:1px dashed #EADFC6}
@@ -159,7 +158,7 @@
   .master p{font-size:13px;color:var(--muted)}
 
   /* reviews */
-  .reviews{background:var(--white);border-radius:40px 40px 0 0}
+  .reviews{background:var(--white)}
   .rating{display:flex;align-items:center;gap:16px;background:var(--bg);border-radius:24px;padding:22px 20px;margin-top:24px}
   .rating .big{font-size:44px;font-weight:700;line-height:1;color:var(--cherry)}
   .stars{color:#e0a325;letter-spacing:2px;font-size:18px}
@@ -265,10 +264,8 @@
 
   /* section rhythm */
   .services{padding-bottom:28px}
-  .about{padding-top:28px;border-radius:0 0 40px 40px}
+  .about{padding-top:28px}
   .about-photo{background:var(--powder)}
-  .reviews{padding-bottom:104px}
-  .contacts{border-radius:40px 40px 0 0;margin-top:-40px;position:relative}
   footer{padding-bottom:40px}
 
   .svc,.master{transition:transform .3s ease,box-shadow .3s ease}
@@ -339,13 +336,12 @@
     .f-top{grid-template-columns:1.2fr 2fr;gap:60px}
     .f-cols{grid-template-columns:repeat(3,1fr)}
     /* polish */
-    .hero{min-height:calc(90vh + 56px);min-height:calc(90svh + 56px);display:flex;align-items:center;padding:120px 0 150px}
+    .hero{min-height:calc(90vh + 56px);min-height:calc(90svh + 56px);display:flex;align-items:center;padding:120px 0 90px}
     .hero-bg{height:auto;bottom:0;background:var(--powder)}
     .hero-bg img{object-position:100% 35%}
     .hero-bg::after{background:linear-gradient(90deg,rgba(251,246,234,.92) 0,rgba(251,246,234,.62) 36%,rgba(251,246,234,0) 66%),linear-gradient(180deg,rgba(251,246,234,.55) 0,rgba(251,246,234,0) 20%)}
     .hero .wrap{padding-top:0;width:100%}
     .hero-text{max-width:540px}
-    .services{margin-top:-56px;position:relative}
   }
   /* вузький комп'ютер / планшет: текст не має залазити на руку */
   @media (min-width:860px) and (max-width:1120px){
@@ -355,11 +351,7 @@
   }
   @media (min-width:860px){
     .services{padding-bottom:44px}
-    .about{padding-top:44px;border-radius:0 0 56px 56px}
-    .services{border-radius:56px 56px 0 0}
-    .prices{border-radius:56px}
-    .reviews{border-radius:56px 56px 0 0;padding-bottom:152px}
-    .contacts{border-radius:56px 56px 0 0;margin-top:-56px}
+    .about{padding-top:44px}
     .work{width:100%}
     .masters-grid{display:grid;overflow:visible;margin:36px 0 0;padding:0}
     .master{width:auto}
@@ -463,10 +455,6 @@
     <span class="label">Портфоліо</span>
     <h2>Наші роботи</h2>
     <div class="works-scroll" id="worksScroll"></div>
-    <div class="works-links">
-      <a class="btn btn-line" href="https://www.instagram.com/magic_nails_vin/" data-link="instagram" target="_blank" rel="noopener">Instagram</a>
-      <a class="btn btn-line" href="https://www.tiktok.com/@magic.nails.vi" data-link="tiktok" target="_blank" rel="noopener">TikTok</a>
-    </div>
   </div>
 </section>
 
@@ -778,7 +766,7 @@
   // плавна поява блоків при прокрутці
   (function(){
     if(!('IntersectionObserver' in window) || reduce) return;
-    var els=document.querySelectorAll('section:not(.hero) .label, section:not(.hero) h2, .svc-grid, .about-photo, .about .intro, .facts, .works-scroll, .works-links, .price-wrap, .masters-grid, .rating, .rev-scroll, #revGoogle, .c-list, .contacts .btns, .map, .f-top');
+    var els=document.querySelectorAll('section:not(.hero) .label, section:not(.hero) h2, .svc-grid, .about-photo, .about .intro, .facts, .works-scroll, .price-wrap, .masters-grid, .rating, .rev-scroll, #revGoogle, .c-list, .contacts .btns, .map, .f-top');
     var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }); },{rootMargin:'0px 0px -6% 0px',threshold:.05});
     [].forEach.call(els,function(el){ el.classList.add('reveal'); io.observe(el); });
     // страховка: якщо щось не спрацювало, за 4 с показуємо все
