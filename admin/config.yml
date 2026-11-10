@@ -54,6 +54,12 @@ collections:
             fields:
               - { label: Фото, name: image, widget: image, hint: "Широке горизонтальне фото. Головне (руки) — справа, зліва вільне місце під текст" }
               - { label: Текст під заголовком, name: text, widget: text }
+              - label: Слова зліва на фото (телефон)
+                name: tags
+                widget: list
+                required: false
+                hint: "До 5 коротких слів, у потрібному порядку. Якщо порожньо — беруться назви послуг"
+                field: { label: Слово, name: tag, widget: string }
 
           - label: Про нас
             name: about

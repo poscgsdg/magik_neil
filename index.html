@@ -21,7 +21,7 @@
 <link rel="icon" href="images/logo.png">
 <script>document.documentElement.className+=" js"</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Forum&display=swap" rel="stylesheet">
 <style>
   *{box-sizing:border-box;margin:0;padding:0}
   :root{
@@ -254,7 +254,7 @@
   .hero{position:relative;margin-top:-64px;padding:0 0 48px;overflow:hidden}
   .hero{--hh:410px;--hh:clamp(270px,45svh,410px)}
   .hero-bg{position:absolute;left:0;right:0;top:0;height:var(--hh);background:var(--bg)}
-  .hero-bg img{width:100%;height:100%;object-fit:cover;object-position:80% 50%}
+  .hero-bg img{width:100%;height:100%;object-fit:cover;object-position:66% 50%}
   .hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(251,246,234,.6) 0,rgba(251,246,234,0) 20%,rgba(251,246,234,0) 55%,rgba(251,246,234,.75) 82%,var(--bg) 98%)}
   .hero .wrap{position:relative;padding-top:calc(var(--hh) - 18px)}
   .hero-pills{display:flex;flex-wrap:wrap;gap:8px}
@@ -317,6 +317,20 @@
     .js header,.js .hero-pills,.js .hero h1,.js .hero-text>p,.js .hero .btns{animation:none}
     .js .hero-bg img{opacity:1;transform:none;transition:none}
   }
+
+
+  /* мобільний: список послуг на вільному місці зліва від руки */
+  .hero-tags{position:absolute;left:20px;top:calc(64px + (var(--hh) - 64px)*.38);transform:translateY(-50%);list-style:none;display:grid;gap:2px;z-index:1}
+  .hero-tags li{font-family:'Forum',Georgia,'Times New Roman',serif;font-weight:400;font-size:clamp(22px,6.4vw,27px);line-height:1.15;color:var(--text);display:flex;align-items:center;gap:9px;white-space:nowrap}
+  .hero-tags li::before{content:"";width:14px;height:1.5px;border-radius:2px;background:var(--cherry);flex:none}
+  .js .hero-tags li{animation:mnUp .8s cubic-bezier(.2,.7,.2,1) both}
+  .js .hero-tags li:nth-child(1){animation-delay:.3s}
+  .js .hero-tags li:nth-child(2){animation-delay:.4s}
+  .js .hero-tags li:nth-child(3){animation-delay:.5s}
+  .js .hero-tags li:nth-child(4){animation-delay:.6s}
+  .js .hero-tags li:nth-child(5){animation-delay:.7s}
+  @media (prefers-reduced-motion:reduce){ .js .hero-tags li{animation:none} }
+  @media (min-width:860px){ .hero-tags{display:none} }
 
   /* desktop */
   @media (min-width:860px){
@@ -423,6 +437,7 @@
 
 <section class="hero" id="top">
   <div class="hero-bg"><img id="heroImg" src="" alt=""></div>
+  <ul class="hero-tags" id="heroTags" aria-hidden="true"></ul>
   <div class="wrap">
     <div class="hero-text">
       <div class="hero-pills">
@@ -611,6 +626,9 @@
       // головний екран і про нас
       if(d.hero){ if(d.hero.image) $('heroImg').src=img(d.hero.image); if(d.hero.text) $('heroText').textContent=d.hero.text; }
       if(d.about){ if(d.about.image) $('aboutImg').src=img(d.about.image); if(d.about.text) $('aboutText').textContent=d.about.text; }
+      // назви послуг на головному екрані (телефон)
+      var tags=(d.hero&&d.hero.tags&&d.hero.tags.length)?d.hero.tags:(d.services||[]).map(function(s){ return s.title; });
+      if($('heroTags')) $('heroTags').innerHTML=tags.slice(0,5).map(function(s){ return '<li>'+esc(s)+'</li>'; }).join('');
       // послуги
       $('svcGrid').innerHTML=(d.services||[]).map(function(s){
         var photo = s.image ? '<div class="svc-img"><img loading="lazy" src="'+esc(img(s.image))+'" alt="'+esc(s.title)+'"></div>' : '';
