@@ -52,7 +52,7 @@ collections:
             name: hero
             widget: object
             fields:
-              - { label: Фото, name: image, widget: image }
+              - { label: Фото, name: image, widget: image, hint: "Широке горизонтальне фото. Головне (руки) — справа, зліва вільне місце під текст" }
               - { label: Текст під заголовком, name: text, widget: text }
 
           - label: Про нас
@@ -67,19 +67,10 @@ collections:
             widget: list
             summary: "{{fields.title}} — {{fields.price}}"
             fields:
-              - label: Значок
-                name: icon
-                widget: select
-                options:
-                  - { label: Манікюр, value: manicure }
-                  - { label: Покриття, value: coating }
-                  - { label: Нарощення, value: extension }
-                  - { label: Дизайн (сердечко), value: design }
-                  - { label: Педикюр, value: pedicure }
-                  - { label: Зірочка, value: star }
               - { label: Назва, name: title, widget: string }
               - { label: Опис, name: desc, widget: string, required: false }
               - { label: Ціна, name: price, widget: string, hint: "Напр. «від 650 ₴»" }
+              - { label: Фото, name: image, widget: image, required: false, hint: "Вертикальне фото для картки. Можна не додавати — тоді картка буде без фото" }
 
           - label: Фото робіт
             name: gallery

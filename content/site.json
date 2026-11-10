@@ -11,7 +11,7 @@
     "hours_text": "Щодня 9:00–20:00"
   },
   "hero": {
-    "image": "images/work-nude-glitter.jpg",
+    "image": "images/hero-wide.jpg",
     "text": "Манікюр, покриття гель-лаком, нарощення і дизайни. Просп. Коцюбинського 38, щодня з 9:00 до 20:00."
   },
   "about": {
@@ -20,28 +20,28 @@
   },
   "services": [
     {
-      "icon": "manicure",
       "title": "Манікюр",
       "desc": "з поліруванням нігтів",
-      "price": "500 ₴"
+      "price": "500 ₴",
+      "image": "images/service-manicure.jpg"
     },
     {
-      "icon": "coating",
       "title": "Покриття",
       "desc": "манікюр + гель-лак",
-      "price": "від 650 ₴"
+      "price": "від 650 ₴",
+      "image": "images/service-coating.jpg"
     },
     {
-      "icon": "extension",
       "title": "Нарощення",
       "desc": "будь-яка довжина",
-      "price": "від 850 ₴"
+      "price": "від 850 ₴",
+      "image": "images/service-extension.jpg"
     },
     {
-      "icon": "design",
       "title": "Дизайн",
       "desc": "френч, втирка, малюнки",
-      "price": "від 20 ₴"
+      "price": "від 20 ₴",
+      "image": "images/service-design.jpg"
     }
   ],
   "gallery": [
