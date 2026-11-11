@@ -255,7 +255,7 @@
   .menu-open header.scrolled{background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;box-shadow:none}
   .hero{position:relative;margin-top:-64px;padding:0 0 48px;overflow:hidden}
   .hero{--hh:410px;--hh:clamp(270px,45svh,410px)}
-  .hero-bg{position:absolute;left:0;right:0;top:0;height:var(--hh);background:var(--bg)}
+  .hero-bg{position:absolute;left:0;right:0;top:0;height:var(--hh);background:var(--bg);overflow:hidden}
   .hero-bg img{width:100%;height:100%;object-fit:cover;object-position:66% 50%}
   .hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(251,246,234,.6) 0,rgba(251,246,234,0) 20%,rgba(251,246,234,0) 55%,rgba(251,246,234,.75) 82%,var(--bg) 98%)}
   .hero .wrap{position:relative;padding-top:calc(var(--hh) - 18px)}
@@ -315,6 +315,7 @@
   .js .hero .btns{animation:mnUp .9s cubic-bezier(.2,.7,.2,1) .66s both}
   .js .hero-bg img{opacity:0;transform:scale(1.08);transition:opacity 1.2s ease,transform 2.2s cubic-bezier(.2,.7,.2,1)}
   .js .hero-bg.ready img{opacity:1;transform:none}
+  .js .status:not(.open):not(.closed){visibility:hidden}
   @media (prefers-reduced-motion:reduce){
     .js header,.js .hero-pills,.js .hero h1,.js .hero-text>p,.js .hero .btns{animation:none}
     .js .hero-bg img{opacity:1;transform:none;transition:none}
