@@ -1,0 +1,28 @@
+{
+  "items": [
+    {
+      "title": "Манікюр",
+      "desc": "з поліруванням нігтів",
+      "price": "500 ₴",
+      "image": "images/service-manicure.jpg"
+    },
+    {
+      "title": "Покриття",
+      "desc": "манікюр + гель-лак",
+      "price": "від 650 ₴",
+      "image": "images/service-coating.jpg"
+    },
+    {
+      "title": "Нарощення",
+      "desc": "будь-яка довжина",
+      "price": "від 850 ₴",
+      "image": "images/service-extension.jpg"
+    },
+    {
+      "title": "Дизайн",
+      "desc": "френч, втирка, малюнки",
+      "price": "від 20 ₴",
+      "image": "images/service-design.jpg"
+    }
+  ]
+}

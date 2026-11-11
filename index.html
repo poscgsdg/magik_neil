@@ -12,10 +12,12 @@
 <meta property="og:url" content="https://magic-nails-vin.netlify.app/">
 <meta property="og:title" content="Magic Nails — студія манікюру у Вінниці">
 <meta property="og:description" content="Манікюр, покриття, нарощення та дизайни. Просп. Коцюбинського 38, щодня 9:00–20:00. Запис у Telegram.">
-<meta property="og:image" content="https://magic-nails-vin.netlify.app/images/og.jpg">
+<meta property="og:image" content="https://magic-nails-vin.netlify.app/images/og-card.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta name="twitter:image" content="https://magic-nails-vin.netlify.app/images/og-card.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Magic Nails — студія манікюру у Вінниці">
+<meta property="og:image:alt" content="Студія Magic Nails у Вінниці: вивіска і робочі місця">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#FBF6EA">
 <link rel="icon" href="images/logo.png">
@@ -605,7 +607,7 @@
 <div class="sticky" id="sticky"><a class="btn" href="https://t.me/magic_nails_vin" data-link="telegram" target="_blank" rel="noopener">Записатись у Telegram</a></div>
 
 <script>
-  // ===== Вміст сайту береться з content/site.json (його редагує адмінка /admin) =====
+  // ===== Вміст сайту береться з файлів content/*.json (їх редагує адмінка /admin) =====
   (function(){
     var GICON='<svg class="g" viewBox="0 0 48 48" aria-label="Google"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9 3.5l6.7-6.7C35.6 2.4 30.2 0 24 0 14.6 0 6.6 5.4 2.7 13.3l7.8 6C12.4 13.6 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.7c-.6 2.9-2.2 5.4-4.7 7.1l7.6 5.9c4.4-4.1 6.9-10.1 6.9-17.5z"/><path fill="#FBBC05" d="M10.5 28.7c-.5-1.4-.8-3-.8-4.7s.3-3.2.8-4.7l-7.8-6C1 16.6 0 20.2 0 24s1 7.4 2.7 10.7l7.8-6z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.6-5.9c-2.1 1.4-4.9 2.3-8.3 2.3-6.3 0-11.6-4.2-13.5-9.9l-7.8 6C6.6 42.6 14.6 48 24 48z"/></svg>';
     function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];}); }
@@ -669,8 +671,19 @@
     }
 
     var src = window.__SITE__ ? Promise.resolve(window.__SITE__)
-      : fetch('content/site.json?v='+Date.now()).then(function(r){ if(!r.ok) throw r; return r.json(); });
-    src.then(render).catch(function(e){ console.error('Не вдалося завантажити content/site.json', e); });
+      : (function(){
+          // кожен розділ адмінки — окремий файл; списки лежать усередині під своїм ключем
+          var PARTS={contacts:null, hero:null, about:null, services:'items', gallery:'items', prices:'groups', masters:'items', reviews:null};
+          var v=Date.now(), keys=Object.keys(PARTS);
+          return Promise.all(keys.map(function(k){
+            return fetch('content/'+k+'.json?v='+v).then(function(r){ return r.ok ? r.json() : null; }).catch(function(){ return null; });
+          })).then(function(arr){
+            var d={};
+            keys.forEach(function(k,i){ var j=arr[i]; if(!j) return; d[k]= PARTS[k] ? (j[PARTS[k]]||[]) : j; });
+            return d;
+          });
+        })();
+    src.then(render).catch(function(e){ console.error('Не вдалося завантажити вміст сайту', e); });
   })();
 </script>
 <script>

@@ -1,5 +1,8 @@
 # Налаштування адмінки Decap CMS для сайту Magic Nails
 # Документація: https://decapcms.org/docs/
+#
+# Кожен розділ адмінки — окремий файл у content/, щоб на телефоні
+# відкривалось лише те, що треба змінити (наприклад, тільки ціни).
 
 backend:
   name: github
@@ -25,105 +28,137 @@ public_folder: images
 collections:
   - name: site
     label: Сайт
+    description: "Оберіть, що змінити. Після змін натисніть «Опублікувати» → «Опублікувати зараз». Сайт оновиться за 1–2 хвилини."
     editor:
       preview: false
     files:
-      - name: content
-        label: Вміст сайту
-        file: content/site.json
+
+      - name: prices
+        label: Ціни
+        file: content/prices.json
         format: json
         fields:
-          - label: Контакти
-            name: contacts
-            widget: object
-            collapsed: false
-            fields:
-              - { label: Телефон, name: phone, widget: string, hint: "Наприклад: +38 093 149 16 72" }
-              - { label: Адреса, name: address, widget: string }
-              - { label: Місто, name: city, widget: string }
-              - { label: Графік (текстом), name: hours_text, widget: string, hint: "Як показувати на сайті, напр. «Щодня 9:00–20:00»" }
-              - { label: Відкриваємось о (година), name: open_hour, widget: number, value_type: int, min: 0, max: 23, hint: "Для статусу «Зараз відчинено»" }
-              - { label: Зачиняємось о (година), name: close_hour, widget: number, value_type: int, min: 1, max: 24 }
-              - { label: Telegram (посилання), name: telegram, widget: string }
-              - { label: Instagram (посилання), name: instagram, widget: string }
-              - { label: TikTok (посилання), name: tiktok, widget: string }
-
-          - label: Головний екран
-            name: hero
-            widget: object
-            fields:
-              - { label: Фото, name: image, widget: image, hint: "Широке горизонтальне фото. Головне (руки) — справа, зліва вільне місце під текст" }
-              - { label: Текст під заголовком, name: text, widget: text }
-              - label: Слова зліва на фото (телефон)
-                name: tags
-                widget: list
-                required: false
-                hint: "До 5 коротких слів, у потрібному порядку. Якщо порожньо — беруться назви послуг"
-                field: { label: Слово, name: tag, widget: string }
-
-          - label: Про нас
-            name: about
-            widget: object
-            fields:
-              - { label: Фото, name: image, widget: image, hint: "Горизонтальне фото студії (інтер'єр, робочі місця, команда)" }
-              - { label: Текст, name: text, widget: text }
-
-          - label: Послуги (картки «Що ми робимо»)
-            name: services
+          - label: Розділи прайсу
+            name: groups
             widget: list
-            summary: "{{fields.title}} — {{fields.price}}"
-            fields:
-              - { label: Назва, name: title, widget: string }
-              - { label: Опис, name: desc, widget: string, required: false }
-              - { label: Ціна, name: price, widget: string, hint: "Напр. «від 650 ₴»" }
-              - { label: Фото, name: image, widget: image, required: false, hint: "Вертикальне фото для картки. Можна не додавати — тоді картка буде без фото" }
-
-          - label: Фото робіт
-            name: gallery
-            widget: list
-            summary: "{{fields.alt}}"
-            fields:
-              - { label: Фото, name: image, widget: image }
-              - { label: Короткий опис, name: alt, widget: string, required: false, hint: "Напр. «Вишневе покриття» — для Google і незрячих" }
-
-          - label: Ціни
-            name: prices
-            widget: list
+            label_singular: розділ
+            collapsed: true
             summary: "{{fields.title}}"
             fields:
               - { label: Назва розділу, name: title, widget: string, hint: "Напр. «Манікюр», «Нарощення»" }
               - label: Послуги
                 name: items
                 widget: list
+                label_singular: послугу
+                collapsed: true
                 summary: "{{fields.name}} — {{fields.price}}"
                 fields:
                   - { label: Назва, name: name, widget: string }
-                  - { label: Підпис дрібним, name: note, widget: string, required: false, hint: "Напр. «Комплекс 1» — можна залишити порожнім" }
                   - { label: Ціна, name: price, widget: string, hint: "Напр. «650 ₴»" }
+                  - { label: Підпис дрібним, name: note, widget: string, required: false, hint: "Напр. «Комплекс 1» — можна залишити порожнім" }
               - { label: Примітка під розділом, name: footnote, widget: text, required: false }
 
-          - label: Майстри
-            name: masters
+      - name: gallery
+        label: Фото робіт
+        file: content/gallery.json
+        format: json
+        fields:
+          - label: Фото робіт
+            name: items
             widget: list
+            label_singular: фото
+            collapsed: true
+            summary: "{{fields.alt}}"
+            fields:
+              - { label: Фото, name: image, widget: image, choose_url: false }
+              - { label: Короткий опис, name: alt, widget: string, required: false, hint: "Напр. «Вишневе покриття» — для Google і незрячих" }
+
+      - name: masters
+        label: Майстри
+        file: content/masters.json
+        format: json
+        fields:
+          - label: Майстри
+            name: items
+            widget: list
+            label_singular: майстра
+            collapsed: true
             summary: "{{fields.name}}"
             fields:
               - { label: Імʼя, name: name, widget: string }
               - { label: Посада, name: role, widget: string, default: "майстер манікюру" }
-              - { label: Фото, name: photo, widget: image, required: false, hint: "Можна не додавати — тоді буде заглушка" }
+              - { label: Фото, name: photo, widget: image, choose_url: false, required: false, hint: "Можна не додавати — тоді буде перша літера імені" }
 
-          - label: Відгуки
-            name: reviews
-            widget: object
+      - name: reviews
+        label: Відгуки
+        file: content/reviews.json
+        format: json
+        fields:
+          - { label: Рейтинг у Google, name: rating, widget: string, hint: "Напр. «4,9»" }
+          - { label: Кількість відгуків у Google, name: count, widget: string, hint: "Тільки число, напр. «43» — слово «відгуки» підставиться само" }
+          - { label: Посилання на відгуки в Google, name: google_url, widget: string }
+          - label: Відгуки на сайті
+            name: items
+            widget: list
+            label_singular: відгук
+            collapsed: true
+            summary: "{{fields.name}} — {{fields.stars}}★"
             fields:
-              - { label: Рейтинг у Google, name: rating, widget: string, hint: "Напр. «4,9»" }
-              - { label: Кількість відгуків у Google, name: count, widget: string, hint: "Тільки число, напр. «43» — слово «відгуки» підставиться само" }
-              - { label: Посилання на відгуки в Google, name: google_url, widget: string }
-              - label: Відгуки на сайті
-                name: items
-                widget: list
-                summary: "{{fields.name}} — {{fields.stars}}★"
-                fields:
-                  - { label: Імʼя, name: name, widget: string }
-                  - { label: Коли (як у Google), name: date, widget: string, required: false, hint: "Напр. «2 місяці тому»" }
-                  - { label: Зірок, name: stars, widget: number, value_type: int, min: 1, max: 5, default: 5 }
-                  - { label: Текст відгуку, name: text, widget: text, hint: "Копіюйте дослівно з Google" }
+              - { label: Імʼя, name: name, widget: string }
+              - { label: Коли (як у Google), name: date, widget: string, required: false, hint: "Напр. «2 місяці тому»" }
+              - { label: Зірок, name: stars, widget: number, value_type: int, min: 1, max: 5, default: 5 }
+              - { label: Текст відгуку, name: text, widget: text, hint: "Копіюйте дослівно з Google" }
+
+      - name: contacts
+        label: Контакти і графік
+        file: content/contacts.json
+        format: json
+        fields:
+          - { label: Телефон, name: phone, widget: string, hint: "Наприклад: +38 093 149 16 72" }
+          - { label: Адреса, name: address, widget: string }
+          - { label: Місто, name: city, widget: string }
+          - { label: Графік (текстом), name: hours_text, widget: string, hint: "Як показувати на сайті, напр. «Щодня 9:00–20:00»" }
+          - { label: Відкриваємось о (година), name: open_hour, widget: number, value_type: int, min: 0, max: 23, hint: "Для статусу «Зараз відчинено»" }
+          - { label: Зачиняємось о (година), name: close_hour, widget: number, value_type: int, min: 1, max: 24 }
+          - { label: Telegram (посилання), name: telegram, widget: string }
+          - { label: Instagram (посилання), name: instagram, widget: string }
+          - { label: TikTok (посилання), name: tiktok, widget: string }
+
+      - name: hero
+        label: Головний екран
+        file: content/hero.json
+        format: json
+        fields:
+          - { label: Фото, name: image, widget: image, choose_url: false, hint: "Широке горизонтальне фото. Головне (руки) — справа, зліва вільне місце під текст" }
+          - { label: Текст під заголовком, name: text, widget: text }
+          - label: Слова зліва на фото (телефон)
+            name: tags
+            widget: list
+            required: false
+            hint: "До 5 коротких слів, у потрібному порядку. Якщо порожньо — беруться назви послуг"
+            field: { label: Слово, name: tag, widget: string }
+
+      - name: about
+        label: Про нас
+        file: content/about.json
+        format: json
+        fields:
+          - { label: Фото, name: image, widget: image, choose_url: false, hint: "Горизонтальне фото студії (інтер'єр, робочі місця, команда)" }
+          - { label: Текст, name: text, widget: text }
+
+      - name: services
+        label: Послуги (картки «Що ми робимо»)
+        file: content/services.json
+        format: json
+        fields:
+          - label: Картки послуг
+            name: items
+            widget: list
+            label_singular: картку
+            collapsed: true
+            summary: "{{fields.title}} — {{fields.price}}"
+            fields:
+              - { label: Назва, name: title, widget: string }
+              - { label: Ціна, name: price, widget: string, hint: "Напр. «від 650 ₴»" }
+              - { label: Опис, name: desc, widget: string, required: false }
+              - { label: Фото, name: image, widget: image, choose_url: false, required: false, hint: "Вертикальне фото для картки. Можна не додавати — тоді картка буде без фото" }

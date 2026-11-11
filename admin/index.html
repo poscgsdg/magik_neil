@@ -2,13 +2,75 @@
 <html lang="uk">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#FBF6EA">
   <title>Адмінка — Magic Nails</title>
   <link rel="icon" href="../images/logo.png">
+  <style id="mn-mobile">
+    /* ===== Адмінка на телефоні =====
+       Decap CMS зроблений під компʼютер: редактор має мінімальну ширину 800px.
+       Тут він підлаштовується під екран телефона. На компʼютері нічого не змінюється. */
+    @media (max-width: 799px) {
+      /* без горизонтальної прокрутки */
+      [class*="-EditorContainer"], [class*="-ToolbarContainer"] { min-width: 0 !important; }
+
+      /* --- список розділів --- */
+      [class*="-SidebarContainer"] { display: none !important; }            /* одна колекція — бічне меню зайве */
+      [class*="-CollectionContainer"] { margin: 12px auto !important; padding: 0 10px !important; }
+      [class*="-CollectionMain"] { padding-left: 0 !important; }
+      [class*="-CollectionTopContainer"] { margin-bottom: 12px !important; }
+      [class*="-CollectionControlsContainer"] { display: none !important; } /* перемикач «список/плитка» */
+      [class*="-ListCard-card"] { margin-bottom: 8px !important; border-radius: 12px !important; }
+      [class*="-ListCardLink"] { display: flex !important; align-items: center; justify-content: space-between; padding: 18px 16px !important; }
+      [class*="-ListCardLink"]::after { content: "›"; font-size: 26px; line-height: 1; color: #9aa0a6; margin-left: 12px; }
+      [class*="-ListCardTitle"] { font-size: 17px !important; margin: 0 !important; }
+      [class*="-AppHeaderSiteLink"] { font-size: 12px !important; padding: 0 6px !important; }
+
+      /* --- верхня панель редактора --- */
+      [class*="-ToolbarContainer"] { padding: 0 8px !important; gap: 6px; }
+      [class*="ToolbarSectionMeta"] { display: none !important; }           /* посилання на сайт і аватар */
+      [class*="ToolbarSectionBackLink"] { padding: 0 6px 0 2px !important; margin-right: 0 !important; flex: none !important; border-right: 0 !important; }
+      [class*="BackCollection"] { display: none !important; }               /* «Колекція Сайт» */
+      [class*="ToolbarSectionMain"] { flex: 1 1 auto !important; justify-content: flex-end !important; padding: 0 !important; gap: 6px; min-width: 0; }
+      [class*="ToolbarSubSectionLast"] { display: none !important; }        /* «Переглянути наживо» */
+      [class*="ToolbarSectionMain"] button { margin: 0 !important; white-space: nowrap; }
+
+      /* --- поля --- */
+      [class*="-ControlPaneContainer"] { padding: 0 10px 40px !important; }
+      [class*="-ControlContainer"] { margin-top: 24px !important; }
+      /* 16px — щоб iPhone не збільшував сторінку при натисканні на поле */
+      [class*="-ControlContainer"] input, [class*="-ControlContainer"] textarea { font-size: 16px !important; padding: 12px 14px !important; }
+
+      /* --- вкладені блоки й списки: менше відступів, щоб полям лишалась ширина --- */
+      [class*="-ControlContainer"] > div:not([class*="ControlTopbar"]):not([class*="ControlHint"]) { padding-left: 8px !important; padding-right: 8px !important; padding-bottom: 8px !important; }
+      [class*="SortableListItem"] > div:not([class*="TopBar"]):not([class*="NestedObjectLabel"]) { padding-left: 8px !important; padding-right: 8px !important; padding-bottom: 10px !important; }
+      [class*="-TopBarContainer"] { padding: 8px 10px !important; }
+      [class*="-AddButton"] { padding: 8px 12px !important; font-size: 14px !important; }
+
+      /* --- пункти списків (послуга, фото, майстер): більші кнопки, назва — як кнопка --- */
+      [class*="SortableListItem"] [class*="TopBar"] { min-height: 36px; }
+      [class*="SortableListItem"] [class*="TopBarButton"] { min-width: 40px !important; min-height: 36px !important; }
+      [class*="SortableListItem"] [class*="NestedObjectLabel"] { cursor: pointer; font-size: 16px !important; color: #2A2620 !important; padding: 6px 14px 14px !important; }
+
+      /* --- фото: більші кнопки «Обрати інше зображення» / «Видалити» --- */
+      [class*="FileWidgetButton"] { font-size: 15px !important; padding: 10px 14px !important; margin: 4px 6px 4px 0 !important; }
+    }
+  </style>
 </head>
 <body>
   <!-- Decap CMS: читає налаштування з admin/config.yml -->
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  <script>
+    // Натискання на назву пункту списку (послуга, фото, майстер, відгук) розгортає його,
+    // а не тільки маленька стрілка ліворуч — так зручніше пальцем.
+    document.addEventListener('click', function (e) {
+      var label = e.target.closest && e.target.closest('[class*="NestedObjectLabel"]');
+      if (!label) return;
+      var item = label.closest('[class*="ListItem"]');
+      var toggle = item && item.querySelector('[class*="TopBar"] button');
+      if (toggle) toggle.click();
+    });
+  </script>
 </body>
 </html>

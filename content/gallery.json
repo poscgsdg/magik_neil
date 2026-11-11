@@ -1,0 +1,28 @@
+{
+  "items": [
+    {
+      "image": "images/work-pink.jpg",
+      "alt": "Рожевий манікюр з дизайном"
+    },
+    {
+      "image": "images/work-cherry.jpg",
+      "alt": "Вишневе покриття"
+    },
+    {
+      "image": "images/work-milky-square.jpg",
+      "alt": "Молочний манікюр, квадратна форма"
+    },
+    {
+      "image": "images/work-white-crystals.jpg",
+      "alt": "Білий манікюр з камінцями"
+    },
+    {
+      "image": "images/work-red-hearts.jpg",
+      "alt": "Сердечка на молочному покритті"
+    },
+    {
+      "image": "images/work-nude-glitter.jpg",
+      "alt": "Нюд з блиском"
+    }
+  ]
+}
